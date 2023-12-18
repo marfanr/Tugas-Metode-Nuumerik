@@ -1,63 +1,41 @@
-import string
+# Runge Kutta
+# penyelesaian persamaan matematika menggunakan metode Runge Kutta
+# dy/dx = e^2x-3y^(3/2)
 
-class RungeKutta:
-    plus = []
-    minus = []
-    variables = []
-    items = []
-
-    def __init__(self, df, xout, x0, y0, h):
-        # split for +
-        self.plus = df.split('+')        
-        
-        # find kontant
-        for i in self.plus:
-            # parse konstant and variable
-            variable = []
-            constant = []
-            power = []
-            for j in range(len(i)):
-                if i[j] in string.ascii_letters:
-                    variable.append(i[j])
-                    if i[j] not in self.variables:
-                        self.variables.append(i[j])
-                    if i[j-1] in string.digits and j < len(i):
-                        constant.append(i[:j])                        
-                    if j < len(i)-2 and  i[j+1] is '^':
-                        if i[j+2] in string.digits:
-                            power.append(i[j+2])                               
-                    else:                                                    
-                        power.append('-')
-                    if j < len(i)-1 and i[j+1] is string.ascii_letters:
-                        constant.append(1)     
-            self.items.append([constant, variable, power])
+import math
 
 
-    def calc_derivative(self, *params):
-        params_len  = 0
-        for i in params:
-            params_len += 1
-        if params_len != len(self.variables):
-            print("Error: params length not equal variables length")
-            return
-        
-        total = 0
-        for i in self.items:            
-            const = int(i[0][0])
-            for j in range(len(i[1])):
-                if i[2][j] is not '-':
-                    const *= pow(params[j], int(i[2][j]))
-                else:
-                    const *= params[j]
-            total += const
-        return total
-    
+def f(x, y):
+  return math.exp(2 * x) - 3 * math.pow(y, 3 / 2)
+
+
+def k(h, x0, y0):
+  print(f"f({x0}, {y0}) = {f(x0, y0)}")
+  return h * f(x0, y0)
+
 
 def main():
-    x = "2x^2+3y^2+4xy"
-    rk = RungeKutta(x, 1.2, 1, 1, 0.2)
-    print("F(1,2) = %s\n = %d" % (x, rk.calc_derivative(1, 2)))
-    pass
+  x = float(input("initial value of x (x0) : "))
+  y = float(input("initial value of x (y0) : "))
+  h = float(input("step size (h) : "))
+  xn = float(input("target value of x (xt) : "))
 
-if __name__ == '__main__':
-    main()
+  while (x + h) <= xn:
+    print(f"\nf({x}, {y}) : { f(x, y)}")
+
+    k1_ = k(h, x, y)
+    print("k1 = h * f(x0, y0) =", k1_)
+    k2_ = k(h, x + (h / 2), y + (k1_ / 2))
+    print("k2 = h * f(x0 + h/2, y0 + k1/2) = ", k2_)
+    k3_ = k(h, x + (h / 2), y + (k2_ / 2))
+    print(f"k3 = h * f(x0 + h/2, y0 + k2/2) = {k3_}")
+    k4_ = k(h, x + h, y + k3_)
+    print(f"k4 = h * f(x0 + h, y0 + k3) = {k4_}")
+    y = y + (1 / 6) * (k1_ + (2 * k2_) + (2 * k3_) + k4_)
+    print(f"y1 = y0 + (1/6)*(k1 + 2 * k2 + 2 * k3 + k4) = {y}")
+    x = x + h
+
+
+if __name__ == "__main__":
+  main()
+
