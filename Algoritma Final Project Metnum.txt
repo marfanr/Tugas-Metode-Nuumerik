@@ -1,0 +1,18 @@
+Algoritma Trapezoidal
+1.Masukkan batas bawah (a)
+2.Masukkan batas atas (b)
+3.Masukkan nilai n
+4.Hitung h = (b-a)/n
+5.Hitung f(a) + f(b)
+6.Hitung jumlah f(i) dengan i dari 1 sampai (n-1)
+7.Kalikan jumlah f(i) dengan 2
+8.Hitung f(a) + f(b) + 2*jumlah f(i)
+
+Algoritma Simson
+1.Masukkan batas bawah (a)
+2.Masukkan batas atas (b)
+3.Hitung h = (b-a)/2
+4.Hitung nilai c = (a+b)/2
+5.Hitung f(a), f(b), 4*f(c)
+6.Hitung f(a)+f(b)+ (4*f(c))
+7.Kalikan hasil nomor 7 dengan 0.5*h
