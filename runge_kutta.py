@@ -10,7 +10,6 @@ def f(x, y):
 
 
 def k(h, x0, y0):
-  print(f"f({x0}, {y0}) = {f(x0, y0)}")
   return h * f(x0, y0)
 
 
@@ -20,6 +19,7 @@ def main():
   h = float(input("step size (h) : "))
   xn = float(input("target value of x (xt) : "))
 
+  step = 1
   while (x + h) <= xn:
     print(f"\nf({x}, {y}) : { f(x, y)}")
 
@@ -32,8 +32,9 @@ def main():
     k4_ = k(h, x + h, y + k3_)
     print(f"k4 = h * f(x0 + h, y0 + k3) = {k4_}")
     y = y + (1 / 6) * (k1_ + (2 * k2_) + (2 * k3_) + k4_)
-    print(f"y1 = y0 + (1/6)*(k1 + 2 * k2 + 2 * k3 + k4) = {y}")
+    print(f"y{step} = y0 + (1/6)*(k1 + 2 * k2 + 2 * k3 + k4) = {y}")
     x = x + h
+    step = step + 1
 
 
 if __name__ == "__main__":
