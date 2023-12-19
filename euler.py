@@ -5,10 +5,10 @@ def f(x, y):
 
 def main():
   print("solution for e^2x - 3*y^(3/2) sing euler method")
-  h = float(input("step size (h) : "))
-  xt = float(input("target of x (xt) : "))
   x0 = float(input("intial value of x (x0) : "))
   y0 = float(input("intial value of y (y0) : "))
+  h = float(input("step size (h) : "))
+  xt = float(input("target of x (xt) : "))
   print("\nf(x0, y0) = ", f(x0, y0))
 
   step = 1

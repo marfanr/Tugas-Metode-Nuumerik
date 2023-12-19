@@ -16,3 +16,23 @@ Algoritma Simson
 5.Hitung f(a), f(b), 4*f(c)
 6.Hitung f(a)+f(b)+ (4*f(c))
 7.Kalikan hasil nomor 7 dengan 0.5*h
+
+Algoritma Euler
+1. Masukkan nilai awal x (x0)
+2. Masukkan nilai awal y (y0)
+3. Masukkan besarnya step iterasi (h)
+4. Masukkan target x yang ingin dicari (xt)
+5. Hitung yn = yn-1 + h*f(xn-1, yn-1)
+6. ulangi sampai xn sama dengan xt
+
+Algoritma Runge Kutta
+1. Masukkan nilai awal x (x0)
+2. Masukkan nilai awal y (y0)
+3. Masukkan besarnya step iterasi (h)
+4. Masukkan target x yang ingin dicari (xt)
+5. Hitung k1 = h*f(x0, y0)
+6. Hitung k2 = h*f(x0 + h/2, y0 + k1/2)
+7. Hitung k3 = h*f(x0 + h/2, y0 + k2/2)
+8. Hitung k4 = h*f(x0 + h, y0 + k3)
+9. Hitung y = y0 + 1/6*(k1 + 2*k2 + 2*k3 + k4)
+10. Ulangi step 5 - 9 dengan x0 = x0 + h, dan y0 = y hingga x0 sama dengan xt
