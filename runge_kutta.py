@@ -6,7 +6,7 @@ import math
 
 
 def f(x, y):
-  return math.exp(2 * x) - 3 * math.pow(y, 3 / 2)
+  return x*y + 2*y - 5
 
 
 def k(h, x0, y0):
@@ -14,6 +14,7 @@ def k(h, x0, y0):
 
 
 def main():
+  print("solution for dy/dx = xy + 2y - 5")
   x = float(input("initial value of x (x0) : "))
   y = float(input("initial value of x (y0) : "))
   h = float(input("step size (h) : "))
