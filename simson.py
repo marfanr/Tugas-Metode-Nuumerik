@@ -23,7 +23,7 @@ def simpson13(x0,xn):
     return integration
 
 # Input section
-print("f(x) = sec (x)")
+print("f(x) = 1/(x-1)^3/2 * (x-2)^1/2")
 lower_limit = float(input("Enter lower limit of integration: "))
 upper_limit = float(input("Enter upper limit of integration: "))
 
